@@ -16,19 +16,20 @@
 
 
 #include "Os.h"
-
-#include <gio/gio.h>
+#include <cstdlib>
+#include <sstream>
+#include <string>
 
 
 class GLibString {
 public:
-    GLibString(gchar *value) : value(value) {}
-    ~GLibString() { g_free(value); }
+    GLibString(char *value) : value(value) {}
+    ~GLibString() { free(value); }
 
     operator std::string() { return value; }
 
 private:
-    gchar *value;
+    char *value;
 };
 
 
@@ -41,11 +42,21 @@ public:
 
     virtual bool openBrowser(const char *url)
     {
-        return g_app_info_launch_default_for_uri (url, NULL, NULL) == TRUE;
+        return 0;
     }
 
     virtual std::string userDataDir()
     {
-        return GLibString(g_build_filename(g_get_user_data_dir(), appName().c_str(), NULL));
+        const char* homedir;
+        if ((homedir = getenv("HOME")) == NULL)
+        {
+            homedir = "/tmp";
+        }
+
+        std::stringstream ss;
+        ss << homedir << "/.config/" << appName();
+        std::string dir = ss.str();
+
+        return dir;
     }
 };
