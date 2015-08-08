@@ -14,6 +14,7 @@ app: $(TARGET)
 $(TARGET): $(OBJECTS) $(LOCAL_LIBS)
 	$(SILENTMSG) "\tLD\t$@"
 	$(SILENTCMD) $(CXX) -o $@ $^ $(LIBS)
+	strip $(APP)
 
 clean: $(ADDITIONAL_CLEAN_TARGETS)
 	$(SILENTMSG) "\tCLEAN"
