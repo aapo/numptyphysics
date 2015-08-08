@@ -51,7 +51,7 @@ SDL2Renderer::SDL2Renderer(Vec2 world_size)
 {
     //Vec2 framebuffer_size(900, 480);
     //Vec2 framebuffer_size(480, 800);
-    Vec2 framebuffer_size(800, 480);
+    Vec2 framebuffer_size(540, 960);
 
     m_window = SDL_CreateWindow("NumptyPhysics",
                                 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
