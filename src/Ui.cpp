@@ -874,6 +874,7 @@ void Container::draw( Canvas& screen, const Rect& area )
 
 bool Container::processEvent(ToolkitEvent &ev)
 {
+#if 0 //This is not yet proper multi-touch.
   if (ev.type == ToolkitEvent::PRESS ||
           ev.type == ToolkitEvent::RELEASE ||
           ev.type == ToolkitEvent::MOVE) {
@@ -889,6 +890,7 @@ bool Container::processEvent(ToolkitEvent &ev)
         return true;
     }
   }
+#endif
 
   switch (ev.type) {
       case ToolkitEvent::PRESS:
