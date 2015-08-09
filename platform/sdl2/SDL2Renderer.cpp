@@ -51,12 +51,12 @@ SDL2Renderer::SDL2Renderer(Vec2 world_size)
 {
     //Vec2 framebuffer_size(900, 480);
     //Vec2 framebuffer_size(480, 800);
-    Vec2 framebuffer_size(540, 960);
+    Vec2 framebuffer_size(0, 0);
 
     m_window = SDL_CreateWindow("NumptyPhysics",
                                 SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                 framebuffer_size.x, framebuffer_size.y,
-                                SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+                                SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN_DESKTOP);
 
     m_pixelformat = SDL_AllocFormat(SDL_GetWindowPixelFormat(m_window));
     m_gl_context = SDL_GL_CreateContext(m_window);
